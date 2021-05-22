@@ -1,4 +1,5 @@
 using Application;
+using Infrastructure.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,7 @@ namespace FRMTRI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationLayer();
-            //services.AddInfrastructure(Configuration);
+            services.AddInfrastructure(Configuration);
             services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>

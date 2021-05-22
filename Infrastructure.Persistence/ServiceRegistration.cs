@@ -1,5 +1,7 @@
-﻿using Application.Interfaces.IUnitOfWork;
+﻿using Application.Interfaces.IRepositories;
+using Application.Interfaces.IUnitOfWork;
 using Infrastructure.Persistence.Contexts;
+using Infrastructure.Persistence.Repositories;
 using Infrastructure.Persistence.UnitsOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,8 +22,14 @@ namespace Infrastructure.Persistence
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(MainContext).Assembly.FullName)));
 
+            var conxString = configuration.GetConnectionString("DefaultConnection");
+
             #region Repositories
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            //services.AddScoped<IDashboardRepository>(s => new DashboardRepository(conxString));
+            //services.AddScoped(typeof(IObjectifRepository), typeof(ObjectifRepository));
 
             #endregion
         }
