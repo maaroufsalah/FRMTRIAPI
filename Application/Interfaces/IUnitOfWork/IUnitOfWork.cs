@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.IRepositories;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +12,8 @@ namespace Application.Interfaces.IUnitOfWork
     {
         #region Repositories attributs -> UnitOfWork pattern repositories
 
-        //public IGenericRepository<Ville> Ville { get; }
-       
+        public IGenericRepository<Ville> Ville { get; }
+
 
         #endregion Repositories attributs -> UnitOfWork pattern repositories
 

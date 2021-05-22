@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Models.DTOs.Ville;
+using AutoMapper;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,14 +13,16 @@ namespace Application.Mappings
         {
             #region Map
 
-            //CreateMap<Ville, VilleDto>().ForMember(dest => dest.RegionName, opt => opt
-            //                                  .MapFrom(src => src.Region.Name));
-          
+            CreateMap<Ville, VilleForListDto>().ForMember(dest => dest.NomRegion, opt => opt
+                                              .MapFrom(src => src.Region.NomRegion));
+            CreateMap<Ville, VilleForDetailDto>().ForMember(dest => dest.NomRegion, opt => opt
+                                  .MapFrom(src => src.Region.NomRegion));
             #endregion Map
 
             #region Reverse map
 
-            //CreateMap<VilleDto, Ville>();
+            CreateMap<VilleForListDto, Ville>();
+            CreateMap<VilleForDetailDto, Ville>();
 
             #endregion Reverse map
         }
