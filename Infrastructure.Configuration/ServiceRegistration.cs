@@ -1,4 +1,5 @@
-﻿using Infrastructure.Persistence;
+﻿using Infrastructure.Identity;
+using Infrastructure.Persistence;
 using Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +14,7 @@ namespace Infrastructure.Configuration
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddPersistenceInfrastructure(configuration);
-            //services.AddIdentityInfrastructure(configuration);
+            services.AddIdentityInfrastructure(configuration);
             //services.AddServiceInfrastructure(configuration);
         }
     }

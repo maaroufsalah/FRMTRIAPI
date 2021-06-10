@@ -6,6 +6,7 @@ namespace Application.Models.DTOs.Ville
 {
     public class VilleForInsertDto
     {
-
+        public string NomVille { get; set; }
+        public int? RegionId { get; set; }
     }
 }

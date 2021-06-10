@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FRMTRI.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FRMTRI.Controllers
 {
@@ -24,23 +26,21 @@ namespace FRMTRI.Controllers
         #endregion
 
         #region Actions
-        // GET: api/<VilleController>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VilleForListDto>>> Get()
         {
-            //try
-            //{
-            var villes = (await _villeService.GetAllVilles()).ToList();
-            return villes;
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError(exception: ex, controller: this);
-            //    return this.GetJsonMessage(null)
-            //}
+            try
+            {
+                var villes = (await _villeService.GetAllVilles()).ToList();
+                return villes;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // GET api/<VilleController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VilleForDetailDto>> Get(int id)
         {

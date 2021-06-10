@@ -2,9 +2,18 @@
 {
     public enum Roles
     {
-        Admin,
-        Agent,
+        Athlete,
+        Club,
         Arbitre,
-        Entraineur
+        Coach,
+        MembreAss,
+        MembreFederation,
+        MembreTechniques,
+        Other
+        //Admin,
+        //Agent,
+        //Arbitre,
+        //Entraineur,
+        //Club
     }
 }

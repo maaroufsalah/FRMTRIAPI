@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Models\DTOs\Identity\" />
     <Folder Include="Models\Response\" />
     <Folder Include="Wrappers\" />
     <Folder Include="Ressources\" />

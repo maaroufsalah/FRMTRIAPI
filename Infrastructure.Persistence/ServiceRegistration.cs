@@ -22,7 +22,7 @@ namespace Infrastructure.Persistence
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(MainContext).Assembly.FullName)));
 
-            var conxString = configuration.GetConnectionString("DefaultConnection");
+            //var conxString = configuration.GetConnectionString("DefaultConnection");
 
             #region Repositories
             services.AddScoped<IUnitOfWork, UnitOfWork>();
