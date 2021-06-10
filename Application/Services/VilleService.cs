@@ -23,9 +23,8 @@ namespace Application.Services
         }
         public async Task<IEnumerable<VilleForListDto>> GetAllVilles()
         {
-            var test = await _unitOfWork.Ville.GetAllAsync();
             IEnumerable<Ville> villes = await _unitOfWork.Ville.GetAllAsync(includes: i => i.Region);
-            var mappedVilles = _mapper.Map<IEnumerable<VilleForListDto>>(villes);
+            IEnumerable<VilleForListDto> mappedVilles = _mapper.Map<IEnumerable<VilleForListDto>>(villes);
             return mappedVilles;
         }
 

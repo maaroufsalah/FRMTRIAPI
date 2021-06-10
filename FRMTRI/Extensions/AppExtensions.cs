@@ -2,6 +2,7 @@
 using Application.Exceptions;
 using FRMTRI.Helper;
 using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace FRMTRI.Extensions
         }
 
         // Get Json message for UI
-        public static JsonResult GetJsonMessage(this Controller controller, string messageText, string messageType, bool success = true, object data = null/*, string htmlContent = null*/)
+        public static ActionResult GetJsonMessage(this Controller controller, string messageText, string messageType, bool success = true, object data = null/*, string htmlContent = null*/)
         {
             return new JsonResult(new
             {
