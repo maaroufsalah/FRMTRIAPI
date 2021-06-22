@@ -37,6 +37,7 @@ namespace FRMTRI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(exception: ex, controller: this);
                 return BadRequest(ex.Message);
             }
         }
