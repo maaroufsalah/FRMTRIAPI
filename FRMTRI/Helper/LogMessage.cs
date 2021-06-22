@@ -22,18 +22,28 @@ namespace FRMTRI.Helper
             return $"{controller} |{action} | {message}";
         }
 
-        public static string FormatMessage(Exception exception, Controller controller)
+        public static string FormatMessage(Exception exception, ControllerBase controller)
         {
             // Get Controller and Action Name
-            var actionFullName = controller.GetActionFullName();
+            string actionName = controller.ControllerContext.ActionDescriptor.ActionName;
+            string controllerName = controller.ControllerContext.ActionDescriptor.ControllerName;
+
+            
             // Get Exception and Inner Exception message
             var exceptionFullMessage = exception.GetFullMessage();
             // Build log message
-            var logMessage = $"{actionFullName.controllerName} | {actionFullName.actionName} |";
+            //var logMessage = $"{actionFullName.controllerName} | {actionFullName.actionName} |";
+            //if (exceptionFullMessage.innerMessage is null)
+            //    logMessage += $"{exceptionFullMessage.message}";
+            //else
+            //    logMessage += $"{exceptionFullMessage.message} | {exceptionFullMessage.innerMessage}";
+
+            var logMessage = $"{controllerName} | {actionName} |";
             if (exceptionFullMessage.innerMessage is null)
                 logMessage += $"{exceptionFullMessage.message}";
             else
                 logMessage += $"{exceptionFullMessage.message} | {exceptionFullMessage.innerMessage}";
+
             return logMessage;
         }
 
