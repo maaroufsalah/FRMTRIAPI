@@ -36,7 +36,7 @@ namespace FRMTRI.Extensions
         }
 
         // Log error message with ILogger
-        public static void LogError(this ILogger logger, Exception exception, Controller controller)
+        public static void LogError(this ILogger logger, Exception exception, ControllerBase controller)
         {
             if (exception.GetType() != typeof(ValidationException) && exception.GetType() != typeof(LogicalException))
                 logger.LogError(LogMessage.FormatMessage(exception, controller));
