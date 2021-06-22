@@ -43,9 +43,11 @@ namespace Infrastructure.Identity.Services
         {
             // case existed user
             var user = await _userManager.FindByNameAsync(request.UserName);
-            var checkPassword = await _userManager.CheckPasswordAsync(user, request.Password);
             if (user == null)
                 return new Response<AuthenticatedUser>(string.Format(ExceptionMessage.Authentication.AUTH_NOT_FOUND, request.UserName));
+
+            var checkPassword = await _userManager.CheckPasswordAsync(user, request.Password);
+
             if (!checkPassword)
                 return new Response<AuthenticatedUser>(string.Format(ExceptionMessage.Authentication.AUTH_ERR_CREDENTIALS, request.UserName));
 

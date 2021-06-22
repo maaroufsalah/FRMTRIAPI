@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using FRMTRI.Extensions;
 using System.Threading.Tasks;
 
 namespace FRMTRI.Controllers
@@ -48,6 +49,7 @@ namespace FRMTRI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(exception: ex, controller: this);
                 return BadRequest("Message : " + ex.Message);
             }
         }
