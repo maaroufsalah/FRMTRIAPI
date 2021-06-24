@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FRMTRI.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using Application.Constants;
+using Application.Wrappers;
 
 namespace FRMTRI.Controllers
 {
@@ -48,16 +50,41 @@ namespace FRMTRI.Controllers
             return await _villeService.GetVilleById(id);
         }
 
-        // POST api/<VilleController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        
+        [HttpPost("Register")]
+        public async Task<ActionResult> RegisterVille(VilleForInsertDto villeForInsertDto)
         {
+            try
+            {
+                Response<bool> response = await _villeService.Insert(villeForInsertDto);
+                if (response.Succeeded)
+                    return Ok(response);
+                else
+                    return BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(exception: ex, controller: this);
+                return BadRequest(ErrorMessage.SERVICE_UNAVAILABLE);
+            }
         }
 
-        // PUT api/<VilleController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> UpdateVille(int id, VilleForUpdateDto villeForUpdateDto)
         {
+            try
+            {
+                Response<bool> response = await _villeService.Update(villeForUpdateDto);
+                if (response.Succeeded)
+                    return Ok(response);
+                else
+                    return BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(exception: ex, controller: this);
+                return BadRequest(ErrorMessage.SERVICE_UNAVAILABLE);
+            }
         }
 
         // DELETE api/<VilleController>/5

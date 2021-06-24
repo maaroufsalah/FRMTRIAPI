@@ -51,6 +51,7 @@ namespace Infrastructure.Persistence.UnitsOfWork
         public async Task<int> CompleteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return _dbContext.SaveChanges();
+            //return 1;
         }
 
         public async Task<int> BulkCompleteAsync(CancellationToken cancellationToken = default(CancellationToken))

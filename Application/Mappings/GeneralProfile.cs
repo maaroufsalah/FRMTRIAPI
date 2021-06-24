@@ -1,4 +1,5 @@
-﻿using Application.Models.DTOs.Ville;
+﻿using Application.Models.DTOs.Region;
+using Application.Models.DTOs.Ville;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -17,6 +18,9 @@ namespace Application.Mappings
                                               .MapFrom(src => src.Region.NomRegion));
             CreateMap<Ville, VilleForDetailDto>().ForMember(dest => dest.NomRegion, opt => opt
                                   .MapFrom(src => src.Region.NomRegion));
+
+            CreateMap<Region, RegionForListDto>().ReverseMap();
+            CreateMap<Region, RegionForDetailDto>().ReverseMap();
             #endregion Map
 
             #region Reverse map

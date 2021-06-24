@@ -8,6 +8,14 @@ namespace Application.Constants
 {
     public static class ApplicationMessage
     {
+        public const string InsertSuccess = "l'insertion a été effectuée avec succès.";
+        public const string UpdateSuccess = "la modification a été effectuée avec succès.";
+        public const string DeleteSuccess = "la suppréssion a été effectuée avec succès.";
+
+        public const string InsertFailed = "Une erreur s'est produite lors de l'Insertion.";
+        public const string UpdateFailed = "Une erreur s'est produite lors de la Modification.";
+        public const string DeleteFailed = "Une erreur s'est produite lors de la Supression.";
+
         public const string ChampObligatoire = "Ce champ est obligatoire.";
 
     }
